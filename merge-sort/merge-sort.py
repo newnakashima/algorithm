@@ -12,17 +12,27 @@ def merge_sort(data):
     left = merge_sort(data[:mid])
     right = merge_sort(data[mid:])
     merged = []
-    for i in range(int(len(data))):
-        if len(left) == 0:
-            merged.append(right.pop(0))
+    # for i in range(int(len(data))):
+    i = j = 0
+    while i != len(left) - 1 and j != len(right) - 1:
+        if i == len(left) - 1:
+            print('a')
+            merged.append(right[j])
+            j = j + 1
             continue
-        if len(right) == 0:
-            merged.append(left.pop(0))
+        if j == len(right) - 1:
+            print('b')
+            merged.append(left[i])
+            i = i + 1
             continue
-        if left[0] < right[0]:
-            merged.append(left.pop(0))
+        if left[i] < right[j]:
+            print('c')
+            merged.append(left[i])
+            i = i + 1
         else:
-            merged.append(right.pop(0))
+            print('d')
+            merged.append(right[j])
+            j = j + 1
 
     return merged
 
